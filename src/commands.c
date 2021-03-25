@@ -59,3 +59,24 @@ int changedir(char *args[])
     }
 }
 
+
+// environ, taken from lab 4C //
+extern char **environ;
+main(int argc, char *argv[])
+{
+   int i;
+   for (i = 0; environ[i] != NULL; i++)
+      printf("%s\n",environ[i]);
+   exit(0);
+}
+
+// echo -  prints the argument //
+int echo(char *args[])
+{
+    for (int i = 1; args[i]; i++)
+    {
+        printf("%s ", args[i]);
+    }
+    printf("\n");
+    
+}
