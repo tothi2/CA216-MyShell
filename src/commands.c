@@ -21,3 +21,18 @@ int quit()
 {
     exit(0);
 }
+
+// Lists of directories //
+int dir(){
+    char cwd[200];
+    char *command[3];
+
+    command[0] = "ls";
+    command[1] = NULL;
+
+    pid_t pid = fork();
+    if (pid == 0) {
+        execvp("ls", command);
+    }
+    wait(NULL);
+}
