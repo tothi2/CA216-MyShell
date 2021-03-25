@@ -17,13 +17,14 @@
 
 int main (int argc, char ** argv)
 {
+    char shellpath[MAX_BUFFER];                // shell path
     char buf[MAX_BUFFER];                      // line buffer
     char * args[MAX_ARGS];                     // pointers to arg strings
     char ** arg;                               // working pointer thru args
     char * prompt = ">" ;                      // shell prompt
     
-    strcat(shell_path, getenv("PWD")); // gets present working directories environment.
-    strcat(shell_path, "/myshell"); //finds path of the shell
+    strcat(shellpath, getenv("PWD")); // gets present working directories environment.
+    strcat(shellpath, "/myshell"); //finds path of the shell
     
     init(); // this was defined in utility.h and contains my welcome message
     
