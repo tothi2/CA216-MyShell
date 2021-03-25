@@ -18,6 +18,7 @@ void init()
     printf(" *  *  *  *  *  *  *  *  *  *  *  *  *  *\n");
     printf("* * * * * * * * * * * * * * * * * * * * * *\n");
     printf(" *  *  *  *  *  *  *  *  *  *  *  *  *  *\n");
+    printf("Loading....\n");
 }
 
 
