@@ -24,7 +24,7 @@ void init()
 
 
 // This function job is to split the lines into tokens //
-char **parse_lines(char *line)
+char **split_lines(char *line)
 {
   int size = MAX_ARGS;
   int pos = 0;
