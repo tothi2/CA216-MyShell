@@ -1,20 +1,24 @@
 /* This file is responsible for all the supported commands within my shell */
 
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <dirent.h>
+#include <unistd.h> 
+#include <errno.h>
+#include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <time.h>
+
+
 // Clear Terminal //
-int clr()
+int clr(char **args)
 {
-    char *command[2];
-    command[0] = "clear";
-    command[1] = NULL;
-
-    pid_t pid = fork(); // this fork() command returns twice, if the process fails it returns -1 //
-    if (pid == 0) // if the fork process succeeds then it returns a 0 to the child, therefore I will be using the fork method for checking if a process has failed or not. //
-    {
-        execvp("clear", command); // I use execvp here as the child process does not need to run the same program as the parent. //
-    }
-    wait(NULL);
+    system("clear");
+    return 0;
 }
-
 
 // Quit command to exit shell //
 int quit()
@@ -22,22 +26,57 @@ int quit()
     exit(0);
 }
 
-// Lists of directories //
-int dir()
+// Pause command to have the ability to pause an already running program //
+int pausing(char **args)
 {
-    char cwd[200]; //current working directory //.
-    char *command[3];
-
-    command[0] = "ls";
-    command[1] = NULL;
-
-    pid_t pid = fork();
-    if (pid == 0)
+    if (!strcmp(args[0], "pause"))
     {
-        execvp("ls", command);
+        printf("You have pause the current program, press enter to continue.\n");
+        getchar();      
     }
-    wait(NULL);
+    return 0;
 }
+
+
+
+// Lists of directories, using forks and background exec //
+
+int dir(char **args)
+{
+    if(!strcmp(args[0], "dir"))
+    {
+        system("ls");
+    }
+
+    else if (!strcmp(args[1], "&"))
+    {
+        pid_t pid = 0;
+        pid = fork();
+        int i = 0;
+        int background = 0;
+
+        if (pid < 0)
+        {
+            fprintf(stderr, "Fork Failed");
+        }
+
+        else if (pid == 0)
+        {
+            execlp("ls", "ls", NULL);
+            if (execvp(args[0], args) < 0)
+            { 
+                printf("Attempted to execute given command: Faield. \n"); 
+                exit(0);
+            }
+        }
+        else
+        {
+            wait(NULL);
+        }
+    }
+    return 0;
+}
+
 
 
 // changes current directory //
