@@ -58,7 +58,7 @@ char **split_lines(char *line)
 int execute_command(char *args[])
 {
     char * commands[] = { "clr", "quit", "dir", "environ", "echo", "cd", "pause"}; // list of commands written in commands.c
-    int (*functions[]) (char **) = { &clr, &quit, &dir, &environment, &echo, &changedir, %pausing};
+    int (*functions[]) (char **) = { &clr, &quit, &dir, &environment, &echo, &changedir, &pausing};
     
     // the input must match the function name in order for the command to be executed
     for (int i = 0; commands[i]; i++)
