@@ -14,7 +14,7 @@ int main (int argc, char ** argv)
     char buf[MAX_BUFFER];                      // line buffer
     char * args[MAX_ARGS];                     // pointers to arg strings
     char ** arg;                               // working pointer thru args
-    char * prompt = "==>" ;                    // shell prompt
+    char * prompt = ">" ;                      // shell prompt
 
 /* keep reading input until "quit" command or eof of redirected input */
 
@@ -31,9 +31,9 @@ int main (int argc, char ** argv)
             // last entry will be NULL if (args[0]) 
             {                     // if there's anything there
             /* check for internal/external command */
-            if (!strcmp(args[0],"clr")) 
+            if (!strcmp(args[0],"clear")) 
             { // "clear" command
-                system("clr");
+                system("clear");
                 continue;
             }
             
