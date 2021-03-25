@@ -31,9 +31,9 @@ int main (int argc, char ** argv)
             // last entry will be NULL if (args[0]) 
             {                     // if there's anything there
             /* check for internal/external command */
-            if (!strcmp(args[0],"clear")) 
+            if (!strcmp(args[0],"clr")) 
             { // "clear" command
-                system("clear");
+                system("clr");
                 continue;
             }
             
