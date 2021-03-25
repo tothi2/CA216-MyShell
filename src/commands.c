@@ -23,16 +23,39 @@ int quit()
 }
 
 // Lists of directories //
-int dir(){
-    char cwd[200];
+int dir()
+{
+    char cwd[200]; //current working directory //.
     char *command[3];
 
     command[0] = "ls";
     command[1] = NULL;
 
     pid_t pid = fork();
-    if (pid == 0) {
+    if (pid == 0)
+    {
         execvp("ls", command);
     }
     wait(NULL);
 }
+
+
+// changes current directory //
+int changedir(char *args[])
+{
+    char cwd[200];
+    getcwd(cwd, sizeof(cwd));
+
+    if(args[1] == NULL)
+    {
+        printf("%s\n", cwd);
+    }
+    else
+    {
+        chdir(args[1]);
+        getcwd(cwd, sizeof(cwd));
+        setenv("PWD", cwd, 1);
+        printf("%s\n", cwd);
+    }
+}
+
