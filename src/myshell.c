@@ -21,6 +21,36 @@ int main (int argc, char ** argv)
     char * args[MAX_ARGS];                     // pointers to arg strings
     char ** arg;                               // working pointer thru args
     char * prompt = ">" ;                      // shell prompt
+    
+    strcat(shell_path, getenv("PWD")); // gets present working directories environment.
+    strcat(shell_path, "/myshell"); //finds path of the shell
+    
+    init(); // this was defined in utility.h and contains my welcome message
+    
+    if (argv[1] != NULL)
+    {
+
+        FILE *batchfile = fopen(argv[1], "r");
+
+        char *line = calloc(MAX_ARGS, sizeof(char*));                                         
+        char ** command;
+
+    
+        if (batchfile == NULL)
+        {
+            printf("Error Reading File\n");
+        }
+
+        while (fgets(line, 255, batchfile))
+        {
+            command = split_line(line);
+            execute_command(command);
+            sleep(4);
+        }
+
+        fclose(batchfile);
+    }
+
 
 /* keep reading input until "quit" command or eof of redirected input */
 
