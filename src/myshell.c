@@ -17,73 +17,40 @@
 
 int main (int argc, char ** argv)
 {
-    char shellpath[MAX_BUFFER];                // shell path
     char buf[MAX_BUFFER];                      // line buffer
     char * args[MAX_ARGS];                     // pointers to arg strings
     char ** arg;                               // working pointer thru args
     char * prompt = ">" ;                      // shell prompt
     
-    strcat(shellpath, getenv("PWD")); // gets present working directories environment.
-    strcat(shellpath, "/myshell"); //finds path of the shell
-    
     init(); // this was defined in utility.h and contains my welcome message
     
-    if (argv[1] != NULL)
+    if (argv[1] != NULL) // if the second argument is not null then we must open that file and read it. //
     {
 
-        FILE *batchfile = fopen(argv[1], "r");
+        FILE *fname = fopen(argv[1], "r");
 
         char *line = calloc(MAX_ARGS, sizeof(char*));                                         
         char ** command;
 
     
-        if (batchfile == NULL)
+        while (fgets(line, MAX_BUFFER, fname))
         {
-            printf("Error Reading File\n");
+
+            execute_command(split_lines(line));
+
         }
 
-        while (fgets(line, 255, batchfile))
-        {
-            command = split_line(line);
-            execute_command(command);
-            sleep(4);
-        }
-
-        fclose(batchfile);
+        fclose(fname);
     }
 
-
-/* keep reading input until "quit" command or eof of redirected input */
-
-    while (!feof(stdin)) { 
-
-        /* get command line from input */
-
-        fputs (prompt, stdout);                // write prompt
-        if (fgets (buf, MAX_BUFFER, stdin )) { // read a line
-            /* tokenize the input into args array */
-            
-            arg = args;
-            *arg++ = strtok(buf,SEPARATORS);   // tokenize input
-            while ((*arg++ = strtok(NULL,SEPARATORS)));
-            // last entry will be NULL if (args[0]) {                     // if there's anything there
-
-            /* check for internal/external command */
-            if (!strcmp(args[0],"clear")) { // "clear" command
-                system("clear");
-                continue;
-            }
-            
-            if (!strcmp(args[0],"quit"))   // "quit" command
-                break;                     // break out of 'while' loop
-
-            /* else pass command onto OS (or in this instance, print them out) */
-
-            arg = args;
-            while (*arg) fprintf(stdout,"%s ",*arg++);
-                fputs ("\n", stdout);
-            }
+    while (!feof(stdin))
+    { 
+        printf("%s$ ", getenv("PWD"));
+        fputs(prompt, stdout); // show prompt
+        if (fgets (buf, MAX_BUFFER, stdin ))
+        {
+            //simply executes the commands.
+            execute_command(split_lines(buf));
         }
     }
-return 0; 
 }
