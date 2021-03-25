@@ -61,7 +61,7 @@ int changedir(char *args[])
 
 
 // environ, taken from lab 4C //
-int enviroment(){
+int environment(){
 
     extern char **environ;
     for (int i = 0; environ[i] !=NULL; i++)
