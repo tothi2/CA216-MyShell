@@ -55,30 +55,35 @@ int main (int argc, char ** argv)
 
 /* keep reading input until "quit" command or eof of redirected input */
 
-    while (!feof(stdin))
-    { 
-        /* get command line from input */
-        fputs (prompt, stdout);                // write prompt
-        if (fgets (buf, MAX_BUFFER, stdin )) 
-        {
-            arg = args;
-            args = split_line(buf);
-            if (args[0] != NULL)
-            {
+    while (!feof(stdin)) { 
 
-                if (!strcmp(args[0], "pause"))
-                {
-                    pause_prog();
-                }
-                else{
-                    if (!strcmp(args[0], "myshell")){
-                        external_command(args);
-                    }
-                    else
-                    {
-                        execute_command(args);
-                    }
+        /* get command line from input */
+
+        fputs (prompt, stdout);                // write prompt
+        if (fgets (buf, MAX_BUFFER, stdin )) { // read a line
+            /* tokenize the input into args array */
+            
+            arg = args;
+            *arg++ = strtok(buf,SEPARATORS);   // tokenize input
+            while ((*arg++ = strtok(NULL,SEPARATORS)));
+            // last entry will be NULL if (args[0]) {                     // if there's anything there
+
+            /* check for internal/external command */
+            if (!strcmp(args[0],"clear")) { // "clear" command
+                system("clear");
+                continue;
+            }
+            
+            if (!strcmp(args[0],"quit"))   // "quit" command
+                break;                     // break out of 'while' loop
+
+            /* else pass command onto OS (or in this instance, print them out) */
+
+            arg = args;
+            while (*arg) fprintf(stdout,"%s ",*arg++);
+                fputs ("\n", stdout);
             }
         }
     }
+return 0; 
 }
