@@ -27,7 +27,7 @@ void init()
 int execute_command(char *args[])
 {
     char * commands[] = { "clr", "quit", "dir", "environ", "echo", "cd"}; // list of commands written in commands.c
-    int (*functions[]) (char **) = { &clr, &quit, &dir, &environ, &echo, &changedir};
+    int (*functions[]) (char **) = { &clr, &quit, &dir, &environment, &echo, &changedir};
     
     // the input must match the function name in order for the command to be executed
     for (int i = 0; commands[i]; i++)
