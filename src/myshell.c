@@ -63,7 +63,8 @@ int main (int argc, char ** argv)
         {
             arg = args;
             args = split_line(buf);
-            if (args[0] != NULL){
+            if (args[0] != NULL)
+            {
 
                 if (!strcmp(args[0], "pause"))
                 {
@@ -73,10 +74,10 @@ int main (int argc, char ** argv)
                     if (!strcmp(args[0], "myshell")){
                         external_command(args);
                     }
-                    else{
+                    else
+                    {
                         execute_command(args);
                     }
-                }
             }
         }
     }
