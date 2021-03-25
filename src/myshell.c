@@ -8,6 +8,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include "commands.h"
+#include "utility.h"
 
 
 #define MAX_BUFFER 1024                        // max line buffer
