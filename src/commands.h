@@ -31,7 +31,7 @@ int pausing(char **args)
 {
     if (!strcmp(args[0], "pause"))
     {
-        printf("You have pause the current program, press enter to continue.\n");
+        printf("You have paused the current program, press enter to continue.\n");
         getchar();      
     }
     return 0;
