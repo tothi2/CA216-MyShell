@@ -24,13 +24,12 @@ int main (int argc, char ** argv)
         /* get command line from input */
         fputs (prompt, stdout);                // write prompt
         if (fgets (buf, MAX_BUFFER, stdin )) 
-        { // read a line
-            /* tokenize the input into args array */
+        {
             arg = args;
             *arg++ = strtok(buf,SEPARATORS);   // tokenize input
             while ((*arg++ = strtok(NULL,SEPARATORS)));
             // last entry will be NULL if (args[0]) 
-            {                     // if there's anything there
+            {
             /* check for internal/external command */
             if (!strcmp(args[0],"clear")) 
             { // "clear" command
