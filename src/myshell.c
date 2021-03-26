@@ -1,4 +1,6 @@
-/* code taken from Lab 4B, used as a starting point */
+/* Name: Imrich Toth */
+/* Student number: 19307456 */
+/* I acknowledge the DCU integrity policy, this code was fully written by myself */
 
 
 #include <string.h>
