@@ -1,3 +1,7 @@
+/* Name: Imrich Toth */
+/* Student number: 19307456 */
+/* I acknowledge the DCU integrity policy, this code was fully written by myself */
+
 /* This file is responsible for all the supported commands within my shell */
 
 #include <string.h>
