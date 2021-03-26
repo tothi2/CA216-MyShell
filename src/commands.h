@@ -23,6 +23,15 @@ int clr(char **args)
     return 0;
 }
 
+// displays user manual //
+int help()
+{
+    chdir(getenv("shell"));
+    system("more ../manual/readme");
+}
+
+
+
 // Quit command to exit shell //
 int quit()
 {
