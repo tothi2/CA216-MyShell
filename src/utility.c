@@ -1,3 +1,7 @@
+/* Name: Imrich Toth */
+/* Student number: 19307456 */
+/* I acknowledge the DCU integrity policy, this code was fully written by myself */
+
 #define MAX_BUFFER 1024                        // max line buffer
 #define MAX_ARGS 64                            // max # args
 #define SEPARATORS " \t\n"                     // token sparators
