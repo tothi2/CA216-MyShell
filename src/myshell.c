@@ -51,12 +51,11 @@ int main (int argc, char ** argv)
 
     while (!feof(stdin))
     { 
-        printf("%s$ ", getenv("PWD"));
+        printf("%s$ ", getenv("PWD")); // gets environment of present working directory
         fputs(prompt, stdout); // show prompt
         if (fgets (buf, MAX_BUFFER, stdin ))
         {
-            //simply executes the commands.
-            execute_command(split_lines(buf));
+            execute_command(split_lines(buf)); //command is executed
         }
     }
 }
