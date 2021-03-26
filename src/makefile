@@ -1,2 +1,2 @@
-build: 
-	gcc -o myshell myshell.c
+build:
+		gcc -o myshell myshell.c
