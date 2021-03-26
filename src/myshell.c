@@ -33,7 +33,7 @@ int main (int argc, char ** argv)
     if (argv[1] != NULL) // if the second argument is not null then we must open that file and read it. //
     {
 
-        FILE *fname = fopen(argv[1], "r");
+        FILE *fname = fopen(argv[1], "r"); //opening the file in the argument //
 
         char *line = calloc(MAX_ARGS, sizeof(char*));                                         
         char ** command;
@@ -42,11 +42,11 @@ int main (int argc, char ** argv)
         while (fgets(line, MAX_BUFFER, fname))
         {
 
-            execute_command(split_lines(line));
+            execute_command(split_lines(line)); // running each command in the file, line by line //
 
         }
 
-        fclose(fname);
+        fclose(fname); // close the file once we are done reading each command //
     }
 
     while (!feof(stdin))
