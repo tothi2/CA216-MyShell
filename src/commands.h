@@ -26,8 +26,7 @@ int clr(char **args)
 // displays user manual //
 int help()
 {
-    chdir(getenv("shell"));
-    system("more ../manual/readme");
+    system("more ../manual/readme.md");
 }
 
 
