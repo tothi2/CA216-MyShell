@@ -3,13 +3,21 @@ Welcome to the User Manual,
 This shell was created by Imrich Toth for module CA216 Operating Systems.
 
 Commands:
+
 	'cd' - changes the directory.
+	
 	'clr' - clears the terminal.
+	
 	'dir' - lists contents of current directory.
+	
 	'environ' - lists all the environment strings.
+	
 	'echo' - displays whatever is typed after echo on a new line.
+	
 	'pause' - pauses operation of the shell until 'Enter' is pressed.
+	
 	'quit' - quits the shell
+	
 
 Batchfile:
 * 	 Files can be run if a filename is provided in the command line argument:
