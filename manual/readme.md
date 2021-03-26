@@ -21,9 +21,7 @@ Commands:
 
 Batchfile:
 * 	 Files can be run if a filename is provided in the command line argument:
-* 		
 * 	 An example use of this would be as follows: ./myshell <filename>
-* 	
 * 	 This will run any commands contained in the given file.
 
 
@@ -56,5 +54,7 @@ References:
 
 	
 Name: Imrich Toth
+
 Student Number: 19307456
+
 I consent to the DCU integrity policy, all the code and text written in this project was only done by me.
